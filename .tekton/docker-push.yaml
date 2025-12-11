@@ -1,7 +1,7 @@
 apiVersion: tekton.dev/v1
 kind: PipelineRun
 metadata:
-  name: "py3ocp7ai-svc-on-push"
+  name: "tssc-app1-svc-on-push"
   annotations:
     pipelinesascode.tekton.dev/on-event: "[push]"
     pipelinesascode.tekton.dev/on-target-branch: "[main]"
@@ -17,11 +17,11 @@ metadata:
     pipelinesascode.tekton.dev/task-7: "https://raw.githubusercontent.com/redhat-appstudio/tssc-sample-pipelines/release-v1.7.x/pac/tasks/show-sbom-rhdh.yaml"
     pipelinesascode.tekton.dev/task-8: "https://raw.githubusercontent.com/redhat-appstudio/tssc-sample-pipelines/release-v1.7.x/pac/tasks/summary.yaml"
   labels:
-    argocd/app-name: py3ocp7ai-svc
-    janus-idp.io/tekton: py3ocp7ai-svc
-    backstage.io/kubernetes-id: py3ocp7ai-svc
+    argocd/app-name: tssc-app1-svc
+    janus-idp.io/tekton: tssc-app1-svc
+    backstage.io/kubernetes-id: tssc-app1-svc
     backstage.io/kubernetes-namespace: tssc-app
-    app.kubernetes.io/part-of: py3ocp7ai-svc
+    app.kubernetes.io/part-of: tssc-app1-svc
 spec:
   params:
     - name: dockerfile
@@ -31,7 +31,7 @@ spec:
     - name: image-expires-after
       value: 5d
     - name: output-image
-      value: "quay.io/org4rong/py3ocp7ai-img:{{revision}}"
+      value: "quay.io/opdev-tssc-demo/tssc-app1-img:{{revision}}"
     - name: path-context
       value: "."
     - name: revision
